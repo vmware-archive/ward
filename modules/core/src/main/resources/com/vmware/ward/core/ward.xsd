@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns="http://www.vmware.com/schema/ward"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:tool="http://www.springframework.org/schema/tool"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.vmware.com/schema/ward"
+	elementFormDefault="qualified" attributeFormDefault="unqualified"
+	version="1.0">
+
+	<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+	<xsd:import namespace="http://www.springframework.org/schema/beans" />
+	<xsd:import namespace="http://www.springframework.org/schema/tool" />
+
+	<xsd:annotation>
+		<xsd:documentation><![CDATA[ Namespace support for Ward configuration. ]]></xsd:documentation>
+	</xsd:annotation>
+
+	<xsd:element name="service" type="Tservice">
+		<xsd:annotation>
+			<xsd:documentation><![CDATA[ Service export configuration. ]]></xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+
+	<xsd:complexType name="Tservice">
+		<xsd:complexContent>
+			<xsd:extension base="Tbase">
+				<xsd:attribute name="ranking" type="xsd:int" default="0">
+					<xsd:annotation>
+						<xsd:documentation><![CDATA[ Ranking of the advertised service. ]]></xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="ref" type="xsd:string" use="optional">
+					<xsd:annotation>
+						<xsd:documentation><![CDATA[ Named bean reference to be exported as a service. ]]></xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:element name="reference" type="Treference">
+		<xsd:annotation>
+			<xsd:documentation><![CDATA[ Service reference configuration. ]]></xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+
+	<xsd:complexType name="Treference">
+		<xsd:complexContent>
+			<xsd:extension base="Tbase">
+				<xsd:attribute name="bean-name" type="xsd:string" use="optional">
+					<xsd:annotation>
+						<xsd:documentation><![CDATA[ Bean name filter. ]]></xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="timeout" type="xsd:long" use="optional">
+					<xsd:annotation>
+						<xsd:documentation><![CDATA[ Invocation timeout. ]]></xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="cardinality" use="optional"
+					type="TsingleReferenceCardinality">
+					<xsd:annotation>
+						<xsd:documentation><![CDATA[ Required cardinality. ]]></xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:element name="list" type="Tlist">
+		<xsd:annotation>
+			<xsd:documentation><![CDATA[ List of service reference configurations. ]]></xsd:documentation>
+			<xsd:appinfo>
+				<tool:annotation>
+					<tool:exports type="java.util.List" />
+				</tool:annotation>
+			</xsd:appinfo>
+		</xsd:annotation>
+	</xsd:element>
+
+	<xsd:complexType name="Tlist">
+		<xsd:complexContent>
+			<xsd:extension base="Tbase">
+				<xsd:attribute name="cardinality" use="optional"
+					type="TcollectionCardinality">
+					<xsd:annotation>
+						<xsd:documentation><![CDATA[ Required cardinality. ]]></xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="Tbase">
+		<xsd:complexContent>
+			<xsd:extension base="beans:identifiedType">
+				<xsd:sequence minOccurs="0" maxOccurs="1">
+					<xsd:element name="interfaces" type="beans:listOrSetType"
+						minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation><![CDATA[ Set of service interfaces. ]]></xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+				<xsd:attribute name="interface" type="xsd:token" use="optional">
+					<xsd:annotation>
+						<xsd:documentation><![CDATA[ Service interface. ]]></xsd:documentation>
+						<xsd:appinfo>
+							<tool:annotation>
+								<tool:expected-type type="java.lang.Class" />
+							</tool:annotation>
+						</xsd:appinfo>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:simpleType name="TsingleReferenceCardinality">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="1..1" />
+			<xsd:enumeration value="0..1" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="TcollectionCardinality">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="1..N" />
+			<xsd:enumeration value="0..N" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+</xsd:schema>

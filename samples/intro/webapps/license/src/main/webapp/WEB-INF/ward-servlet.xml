@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:ward="http://www.vmware.com/schema/ward" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.vmware.com/schema/ward
+		http://www.vmware.com/schema/ward/ward.xsd">
+
+	<context:component-scan base-package="com.vmware.ward.intro.common" />
+
+	<bean id="licenseService" class="com.vmware.ward.intro.license.service.LicenseService" />
+
+	<ward:reference id="supportService" timeout="0">
+		<ward:interfaces>
+			<value>com.vmware.ward.intro.common.CommonService</value>
+		</ward:interfaces>
+	</ward:reference>
+
+</beans>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<name>Ward Tests Library Version 2</name>
+	<artifactId>ward-tests-library-v2</artifactId>
+	<version>2.0.0</version>
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.vmware.ward</groupId>
+		<artifactId>ward-tests</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.vmware.ward</groupId>
+			<artifactId>ward-tests-shared</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifestEntries>
+							<Manifest-Version>1.0</Manifest-Version>
+							<Export-Package>com.vmware.ward.library;version="2.0.0"</Export-Package>
+							<Bundle-Vendor>VMware</Bundle-Vendor>
+							<Bundle-Version>2.0.0</Bundle-Version>
+							<Bundle-Name>library-v2</Bundle-Name>
+							<Bundle-ManifestVersion>2</Bundle-ManifestVersion>
+							<Bundle-SymbolicName>com.vmware.ward.library</Bundle-SymbolicName>
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

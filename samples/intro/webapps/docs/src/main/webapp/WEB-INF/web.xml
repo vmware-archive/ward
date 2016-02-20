@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://java.sun.com/xml/ns/javaee
+		http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+
+	<listener>
+		<listener-class>com.vmware.ward.core.ApplicationServletContextListener</listener-class>
+	</listener>
+
+	<context-param>
+		<param-name>contextClass</param-name>
+		<param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>com.vmware.ward.intro.common</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>applicationName</param-name>
+		<param-value>docs</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>applicationDependencies</param-name>
+		<param-value>/ward</param-value>
+	</context-param>
+
+</web-app>

@@ -9,7 +9,7 @@ Download and examine the structure of the provided sample. Do one of the followi
 
 * Import as Maven Projects in STS and use the built-in tooling to deploy them in a tc Server instance which has a
 customized catalina.properties configuration with an extra common.loader entry pointing to
-<your-local-path>/samples/intro/assembly/target/lib/*.jar
+<your-local-path>/samples/intro/assembly/target/base-instance/lib/*.jar
 * Build everything, create an environment variable CATALINA_HOME which points to a Tomcat distribution and use the
 start script in assembly/target/bin
 

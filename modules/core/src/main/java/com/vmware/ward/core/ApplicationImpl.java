@@ -46,7 +46,7 @@ public class ApplicationImpl implements Application {
 	public String getContextPath() {
 		ServletContext servletContext = this.config.getServletContext();
 		if (servletContext != null) {
-			return servletContext.getContextPath();
+			return servletContext.getContextPath().replace("#", "/");
 		}
 		return null;
 	}

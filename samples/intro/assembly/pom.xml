@@ -14,7 +14,7 @@
 	</parent>
 
 	<properties>
-		<tomcat.version>7.0.47</tomcat.version>
+		<tomcat.version>8.0.30</tomcat.version>
 	</properties>
 
 	<dependencies>

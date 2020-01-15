@@ -1,3 +1,5 @@
+# VMware has ended active development of this project, this repository will no longer be updated.
+
 # Ward
 
 Ward is a simple library that enables runtime modularity for web applications
